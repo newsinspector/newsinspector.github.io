@@ -1,0 +1,81 @@
+<!DOCTYPE HTML>
+<!--
+	Stellar by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Web Scraper</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<h1>Web Scraper</h1>
+						<p>Results and Approach</p>
+					</header>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Content -->
+							<section id="content" class="main">
+								<span class="image main"><img src="images/web.jpeg" alt="" width="100" height="500"/></span>
+								<h2>Approach</h2>
+								<p>
+                                    We build a web scraper to extract the latest news article from a news publishing house called <a target="_blank" rel="noopener noreferrer" href="https://qz.com/latest/">Quartz</a>, and the popular Python package is BeautifulSoup was used to extract the inner content of HTML.</p>
+                                    <p>This package parses the web page into the individual HTML/CSS components. To create the “Soup” element, BeautifulSoup takes in the web page hyperlink as an argument. We used the “Soup” element to select the components of the web page to extract the necessary data. </p>
+                                </p>
+                                <h3>Loading the news articles using requests</h3>
+                                <img src="images/bs1.png" alt=""  width="900" height="80" />
+                                <p>The find_all method of the soup object collates all the articles on the page into a list (“weblinks”). The URL corresponding to each article is stored in the “pagelinks” array.</p>
+                                <img src="images/pagelink.png" alt=""  width="900" height="300" />
+                                <p>The hyperlinks for each article were passed into a BeautifulSoup object, it was parsed, to get the author name, article title, and article text using the “find” and “find_all” methods in the created “Soup” object.</p>
+                                <h2>Results</h2>
+                                <p>Titles of the news articles that were webscraped </p>
+                                <img src="images/title.png" alt=""  width="980" height="170" />
+                                <br><br>
+                                <p>Author name of the news articles that were webscraped </p>
+                                <img src="images/author.png" alt=""  width="380" height="190" />
+                                <br><br>
+
+                                <p>Dataframe containing all the web scraped data</p>
+                                <img src="images/df.png" alt=""  width="1000" height="360" />
+
+                           
+                            </section>
+
+					</div>
+
+				<!-- Footer -->
+					<footer id="footer">
+						<section>
+							<h2>References</h2>
+							<ul>
+								<li><a target="_blank" rel="noopener noreferrer" href="https://beautiful-soup-4.readthedocs.io/en/latest/">BeautifulSoup</a></li>
+							 
+							</ul>
+						</section>
+					</footer>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

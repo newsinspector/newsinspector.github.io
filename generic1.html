@@ -1,0 +1,126 @@
+<!DOCTYPE HTML>
+<!--
+	Stellar by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Plagiarism Checker</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<h1>Plagiarism Checker</h1>
+						<p>Results and Approach</p>
+					</header>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Content -->
+							<section id="content" class="main">
+								<span class="image main"><img src="images/plagiarism-checker.jpeg" alt=""  width="600" height="400"/></span>
+								<h2>Dataset</h2>
+								<p>The dataset containing all the news articles is from Kaggle. The data was scraped using BeautifulSoup and stored in Sqlite, the entire Sqlite database is about 1.2 gb.
+								The publications include the New York Times, Breitbart, CNN, Business Insider, the Atlantic, Fox News, Talking Points Memo, Buzzfeed News, National Review, New York Post, the Guardian, NPR, Reuters, Vox, and the Washington Post.
+								The data primarily falls between the years of 2016 and July 2017, although there is a not-insignificant number of articles from 2015, and a possibly insignificant number from before then.</p>
+								<img src="images/data.png" alt=""  width="700" height="400" />
+								<h2>Approach</h2>
+								<p>There are many challenging tasks in the domain of Natural Language Processing that can be accomplished by transforming contextual data into low-dimensional vectors, and thats were doc2vec paradigm comes into play by converting a written document to its numerical representation.</p>
+								<p>Word2vec is another model that converts words into vectors in order to represent their meaning. But the reason we went with Doc2Vec was because of the large number of documents we have in our dataset and the main goal is to find plagiarism which means to find documents that are similar to each other in a contextual sense.
+								Doc2vec is almost similar to word2vec but unlike words, a logical structure is not maintained in documents, so while developing doc2vec another vector named Paragraph ID is added into it.</p>
+								<img src="images/doc2vec.png" alt=""  width="700" height="400" />
+								<p>For the implementation of doc2vec, we used the popular open-source natural language processing library known as Gensim (Generate Similar) which is used for unsupervised topic modeling.  
+									The dataset we got from Kaggle had over 142570 rows and 10 columns. For our model we only utilized the title and content columns. There were a lot of articles with no content or content containing less than 30 words, so we decided to remove such rows from the dataframe. </p>
+									<img src="images/count.png" alt=""  width="550" height="250" />
+
+									
+									<p>
+										We also added fix plagiarised articles which were as follows:
+										<ul>
+											<li>Article 1 plagiarized using QuillBot</li>
+											<li>Article 1 plagiarized using EditPad</li>
+											<li>Article 1 plagiarized using Paraphraser</li>
+											<li>Article 2 plagiarized using QuillBot</li>
+											<li>Article 2 plagiarized using EditPad</li>
+											<li>250 words from Article 1 combined with 250 words from Article 2 plagiarized using Paraphraser</li>
+										  </ul>
+										  <img src="images/df_final_pc.png" alt=""  width="800" height="450" />
+
+									</p>
+									<p>In order to build our dataset, we also decided to only select articles containing not more than 500 words. After that the next step in preparation of data for training our doc2vec model was done by tagging our data.
+										<img src="images/tagged_data.png" alt=""  width="1000" height="150" />
+										<img src="images/pc_model.png" alt=""  width="700" height="350" />
+									</p>
+									<h2>Results</h2>
+									<p>In order to check whether the plagiarism checker is working properly or not we ran two tests: finding documents similar to article 1 and article 2 in our dataframe which were indexed 0 and 1 respectively
+									</p>
+
+									<h2>Article 1</h2>
+										<p>We can see that the four articles which were plagiarised based on Article 1 show up as top 4 similar documents to article 1</p>
+										<img src="images/doc1.png" alt=""  width="800" height="250" />
+									<h2>Article 2</h2>
+									<p>We can see that the two articles which were plagiarised based on Article 2 show up as top 2 similar documents to article 2. 
+									Unfortunately we cannot see the article which was plagiarised half from article 1 and half from article 2, this might get fixed by training the model for more epochs</p>
+									<img src="images/doc2.png" alt=""  width="800" height="250" />
+									
+									</section>
+
+					</div>
+
+				<!-- Footer -->
+					<footer id="footer">
+						<section>
+							<h2>References</h2>
+							<ul>
+								<li><a target="_blank" rel="noopener noreferrer" href="https://quillbot.com/">QuillBot</a></li>
+								<li><a target="_blank" rel="noopener noreferrer" href="https://www.editpad.org/tool/paraphrasing-tool">EditPad</a> </li>
+								<li><a target="_blank" rel="noopener noreferrer" href="https://www.paraphraser.io/">Paraphraser</a></li>
+								<li><a target="_blank" rel="noopener noreferrer" href="https://radimrehurek.com/gensim/auto_examples/tutorials/run_doc2vec_lee.html">Gensim - Doc2Vec</a></li>
+								<li><a target="_blank" rel="noopener noreferrer" href="https://www.kaggle.com/datasets/snapcrack/all-the-news?select=articles1.csv">Kaggle Dataset</a></li>
+
+							  </ul>
+						</section>
+						<!-- <section>
+							<h2>Etiam feugiat</h2>
+							<dl class="alt">
+								<dt>Address</dt>
+								<dd>1234 Somewhere Road &bull; Nashville, TN 00000 &bull; USA</dd>
+								<dt>Phone</dt>
+								<dd>(000) 000-0000 x 0000</dd>
+								<dt>Email</dt>
+								<dd><a href="#">information@untitled.tld</a></dd>
+							</dl>
+							<ul class="icons">
+								<li><a href="#" class="icon brands fa-twitter alt"><span class="label">Twitter</span></a></li>
+								<li><a href="#" class="icon brands fa-facebook-f alt"><span class="label">Facebook</span></a></li>
+								<li><a href="#" class="icon brands fa-instagram alt"><span class="label">Instagram</span></a></li>
+								<li><a href="#" class="icon brands fa-github alt"><span class="label">GitHub</span></a></li>
+								<li><a href="#" class="icon brands fa-dribbble alt"><span class="label">Dribbble</span></a></li>
+							</ul>
+						</section> -->
+						<!-- <p class="copyright">&copy; Untitled. Design: <a href="https://html5up.net">HTML5 UP</a>.</p> -->
+					</footer>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
